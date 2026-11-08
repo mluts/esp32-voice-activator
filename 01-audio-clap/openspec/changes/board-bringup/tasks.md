@@ -7,8 +7,8 @@
 
 ## 2. Status LED module
 
-- [ ] 2.1 Add `main/idf_component.yml` depending on `espressif/led_strip` at `^3.0.0`; verify `idf.py reconfigure` fetches the component and generates `dependencies.lock`.
-- [ ] 2.2 Add `main/status_led.h` and `main/status_led.cpp` with initialize, set color, and off operations, using RMT at 10 MHz on GPIO21, a 16/255 brightness cap, and the LED off after initialization; list the source in `main/CMakeLists.txt` and verify `idf.py build` succeeds.
+- [x] 2.1 Add `main/idf_component.yml` depending on `espressif/led_strip` at `^3.0.0`; verify `idf.py reconfigure` fetches the component and generates `dependencies.lock`.
+- [x] 2.2 Add `main/status_led.h` and `main/status_led.cpp` with initialize, set color, and off operations, using RMT at 10 MHz on GPIO21, a 16/255 brightness cap, and the LED off after initialization; list the source in `main/CMakeLists.txt` and verify `idf.py build` succeeds.
 
 ## 3. Application
 
