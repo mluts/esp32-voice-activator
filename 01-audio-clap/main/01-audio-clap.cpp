@@ -1,6 +1,8 @@
-#include <cstdio>
+#include "status_led.h"
 
-extern "C" void app_main(void)
-{
+namespace {
+void log_boot_report() {}
 
-}
+} // namespace
+
+extern "C" void app_main(void) {}
