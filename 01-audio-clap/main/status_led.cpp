@@ -28,10 +28,10 @@ void status_led::init() {
   ESP_ERROR_CHECK(led_strip_clear(led_strip));
 }
 
-void status_led::set_color(uint8_t red, uint8_t green, uint8_t blue) {
-  led_strip_set_pixel(led_strip, 0, std::min(BRIGHTNESS_CAP, red),
-                      std::min(BRIGHTNESS_CAP, green),
-                      std::min(BRIGHTNESS_CAP, blue));
+void status_led::set_color(const status_led::Color &color) {
+  led_strip_set_pixel(led_strip, 0, std::min(BRIGHTNESS_CAP, color.red),
+                      std::min(BRIGHTNESS_CAP, color.green),
+                      std::min(BRIGHTNESS_CAP, color.blue));
   led_strip_refresh(led_strip);
 }
 
