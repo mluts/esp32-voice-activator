@@ -3,16 +3,24 @@
 #include "esp_flash.h"
 #include "esp_log.h"
 #include "esp_system.h"
-#include "portmacro.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/projdefs.h"
+#include "freertos/task.h"
 #include "status_led.h"
 #include <cinttypes>
-
-// #include "freertos/FreeRTOS.h"
-// #include "freertos/task.h"
+#include <iterator>
 
 namespace {
 constexpr const char *TAG = "app";
 constexpr uint32_t BYTES_PER_MB = 1024 * 1024;
+
+;
+
+constexpr status_led::Color HEARTBEAT_COLORS[] = {{255, 0, 0},
+
+                                                  {0, 255, 0},
+
+                                                  {0, 0, 255}};
 
 const char *chip_model_name(esp_chip_model_t model) {
   switch (model) {
@@ -69,6 +77,16 @@ void log_flash_size() {
 extern "C" void app_main(void) {
   log_chip_info();
   log_flash_size();
+
+  status_led::init();
+
+  for (uint32_t count = 0;; count++) {
+    const status_led::Color &color =
+        HEARTBEAT_COLORS[count % std::size(HEARTBEAT_COLORS)];
+    status_led::set_color(color);
+    ESP_LOGI(TAG, "Heartbeat %" PRIu32, count);
+    vTaskDelay(pdMS_TO_TICKS(1000));
+  }
 
   // for (auto i = 10; i >= 0; i--) {
   //   printf("Restarting in %d seconds...\n", i);
