@@ -2,7 +2,7 @@
 #include "esp_err.h"
 #include "esp_flash.h"
 #include "esp_log.h"
-#include "esp_system.h" // IWYU pragma: keep
+#include "esp_system.h"        // IWYU pragma: keep
 #include "freertos/FreeRTOS.h" // IWYU pragma: keep
 #include "freertos/projdefs.h"
 #include "freertos/task.h"
@@ -85,10 +85,4 @@ extern "C" void app_main(void) {
     ESP_LOGI(TAG, "Heartbeat %" PRIu32, count);
     vTaskDelay(pdMS_TO_TICKS(1000));
   }
-
-  // for (auto i = 10; i >= 0; i--) {
-  //   printf("Restarting in %d seconds...\n", i);
-  //   vTaskDelay(1000 / portTICK_PERIOD_MS);
-  // }
-  // esp_restart();
 }
