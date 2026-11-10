@@ -2,8 +2,8 @@
 #include "esp_err.h"
 #include "esp_flash.h"
 #include "esp_log.h"
-#include "esp_system.h"
-#include "freertos/FreeRTOS.h"
+#include "esp_system.h" // IWYU pragma: keep
+#include "freertos/FreeRTOS.h" // IWYU pragma: keep
 #include "freertos/projdefs.h"
 #include "freertos/task.h"
 #include "status_led.h"
@@ -13,8 +13,6 @@
 namespace {
 constexpr const char *TAG = "app";
 constexpr uint32_t BYTES_PER_MB = 1024 * 1024;
-
-;
 
 constexpr status_led::Color HEARTBEAT_COLORS[] = {{255, 0, 0},
 
